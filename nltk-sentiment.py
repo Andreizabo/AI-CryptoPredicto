@@ -72,3 +72,25 @@ elif sys.argv[1].lower() == 'rdp':
         })
     with open(file_out, 'w') as w:
         w.write(json.dumps(results, indent=4))
+
+
+def score_coindesk(json_name):
+    json_data = open(json_name, 'r')
+    json_data = json.load(json_data)
+    coin_list = list(json_data.keys())
+    sia = SentimentIntensityAnalyzer()
+
+    for coin in coin_list:
+        news_set = set([(e['date'], e['title'] + ' ' + e['text']) for e in json_data[coin]])
+        news_set_scored = []
+        for news in news_set:
+            if '2021' in news[0]:
+                news_set_scored.append({
+                    "date": news[0],
+                    "text": news[1],
+                    "sentiment": sia.polarity_scores(news[1])['compound'],
+                    "sentiment_details": sia.polarity_scores(news[1])
+                })
+        json_object = json.dumps(news_set_scored, indent=4)
+        with open(f"{coin}_coindesk_scored.json", 'w') as out:
+            out.write(json_object)

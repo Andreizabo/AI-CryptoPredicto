@@ -103,5 +103,5 @@ class RedditEater:
 
 
 if __name__ == '__main__':
-    rdet = RedditEater('ethtrader')
+    rdet = RedditEater('ethereum')
     rdet.eat()
