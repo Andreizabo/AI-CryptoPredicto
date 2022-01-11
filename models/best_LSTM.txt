@@ -1,0 +1,2 @@
+Best model: LSTM_True_128_150_16
+Best MAE: 163.1351622395833

@@ -1,0 +1,2 @@
+Best model: RNN_True_128_50_32
+Best MAE: 125.90680169270834

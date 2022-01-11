@@ -1,0 +1,2 @@
+Best model: RNN_True_32_1250_64
+Best MAE: 156.84274374999995

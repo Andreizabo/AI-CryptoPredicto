@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Ethereum predict </title>
+    <script src="index.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100%;
+            background-image: url(background.svg);
+            color: #fefefe;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        main {
+            margin: 10em auto 5em auto;
+            display: flex;
+            flex-direction: column;
+            max-width: 20%;
+        }
+
+        #title {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        label {
+            margin: 5px 0;
+        }
+
+        input {
+            padding: 0.375rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+        #predict {
+            margin-top: 30px;
+        }
+
+        #prediction_image {
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto 50px auto;
+            display: block;
+        }
+
+        #notice {
+            display: none;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 1500px) {
+            main {
+                max-width: 30%;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            main {
+                max-width: 60%;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <main>
+            <h1 id="title"> Ethereum predict </h1>
+
+            <label for="model_name"> Choose a model and a date range </label>
+            <select name="model_name" id="model_name" class="form-select">
+                <option value="RNN"> RNN </option>
+                <option value="LSTM"> LSTM </option>
+                <option value="GRU"> GRU </option>
+                <option value="RNN_sentiments"> RNN with sentiments </option>
+                <option value="LSTM_sentiments"> LSTM with sentiments </option>
+                <option value="GRU_sentiments"> GRU with sentiments </option>
+            </select>
+
+            <br>
+            <label for="start_date"> Start date </label>
+            <input type="date" id="start_date" name="start_date">
+            <br>
+            <label for="end_date"> End date </label>
+            <input type="date" id="end_date" name="end_date">
+            <br>
+            <button id="predict" onclick="predict()" class="btn btn-primary"> Predict </button>
+            <br>
+            <p id="notice">See the prediction below.</p>
+        </main>
+        <img id="prediction_image" src="" onError="no_data();">
+    </body>
+</html>

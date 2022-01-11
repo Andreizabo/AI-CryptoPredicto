@@ -1,0 +1,2 @@
+Best model: GRU_True_128_1500_32
+Best MAE: 233.31224726562505
